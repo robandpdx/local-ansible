@@ -1,0 +1,27 @@
+- name: Install Homebrew and packages
+  hosts: localhost
+  vars:
+    homebrew_installed_packages:
+      - vim
+      - git
+      - rbenv
+      - ruby-build
+      - jenv
+      - tfenv
+      - gh
+  roles:
+    - geerlingguy.mac.homebrew
+
+- name: Install AWS CLI
+  hosts: localhost
+  roles:
+    - awscli
+
+- name: Install SAM CLI
+  hosts: localhost
+  tasks:
+    - community.general.homebrew_tap:
+        name: aws/tap
+    - community.general.homebrew:
+        name: aws-sam-cli
+        state: present

@@ -25,3 +25,8 @@
     - community.general.homebrew:
         name: aws-sam-cli
         state: present
+
+- name: Install nvm
+  hosts: localhost
+  roles:
+    - nvm

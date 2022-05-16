@@ -1,0 +1,9 @@
+---
+- name: Check if nvm is already installed
+  stat:
+    path: ~/.nvm/nvm.sh
+  register: b
+
+- name: Install nvm
+  script: install-nvm.sh
+  when: not b.stat.exists

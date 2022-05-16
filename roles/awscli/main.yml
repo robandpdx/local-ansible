@@ -1,0 +1,9 @@
+---
+- name: Check if AWS CLI is already installed
+  stat:
+    path: /usr/local/bin/aws
+  register: b
+
+- name: Install AWS CLI
+  script: install-awscli.sh
+  when: not b.stat.exists
